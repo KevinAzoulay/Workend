@@ -28,7 +28,14 @@ import { AddTaskComponent } from './comps/add-task/add-task.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
